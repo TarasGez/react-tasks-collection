@@ -1,35 +1,11 @@
 import { useState } from "react";
 import "./App.css";
 import Col from "./Col";
+import { calculateWinner } from "./helpers";
 
 function App() {
   const [isX, setIsX] = useState(true);
-
   const [squares, setSquares] = useState(Array(9).fill(null));
-
-  function calculateWinner(squares: string[]) {
-    const lines = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
-    for (let i = 0; i < lines.length; i++) {
-      const [a, b, c] = lines[i];
-      if (
-        squares[a] &&
-        squares[a] === squares[b] &&
-        squares[a] === squares[c]
-      ) {
-        return squares[a];
-      }
-    }
-    return null;
-  }
 
   const winner = calculateWinner(squares);
 
@@ -38,15 +14,15 @@ function App() {
       return;
     }
 
-    const _squares = [...squares];
+    const newSquares = [...squares];
     const value = isX ? "X" : "0";
-    _squares[id] = value;
+    newSquares[id] = value;
 
-    setSquares(_squares);
+    setSquares(newSquares);
     setIsX(!isX);
   };
 
-  const netMap = squares.map((_col, i) => (
+  const squaresMap = squares.map((_col, i) => (
     <Col key={i} text={squares[i]} callBack={() => callBack(i)} />
   ));
 
@@ -55,7 +31,7 @@ function App() {
   return (
     <>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
-        {netMap}
+        {squaresMap}
       </div>
       <span>{title}</span>
     </>

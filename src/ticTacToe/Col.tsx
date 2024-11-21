@@ -8,21 +8,14 @@ export default function Col({
   return (
     <div
       style={{
+        border: "1px solid",
+        borderColor: "black",
         width: "50px",
         height: "50px",
       }}
+      onClick={callBack}
     >
-      <button
-        style={{
-          border: "1px solid",
-          borderColor: "black",
-          width: "50px",
-          height: "50px",
-        }}
-        onClick={callBack}
-      >
-        {text}
-      </button>
+      {text}
     </div>
   );
 }
