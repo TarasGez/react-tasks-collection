@@ -1,9 +1,9 @@
 import { useState } from "react";
-import "./App.css";
+import "../../App.css";
 import Col from "./Col";
 import { calculateWinner } from "./helpers";
 
-function App() {
+export default function TicTacToe() {
   const [isX, setIsX] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
 
@@ -37,5 +37,3 @@ function App() {
     </>
   );
 }
-
-export default App;

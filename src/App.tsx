@@ -1,3 +1,6 @@
 import "./App.css";
+import AppRouter from "./pages/AppRouter";
 
-export function Home() {}
+export default function App() {
+  return <AppRouter />;
+}

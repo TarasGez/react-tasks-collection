@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./App.css";
+import "../../App.css";
 import { calculateWinner, generateBingoBoard } from "./helpers";
 
-const Bingo = () => {
+export default function Bingo() {
   const [board, setBoard] = useState<number[]>(generateBingoBoard());
   const [selected, setSelected] = useState<number[]>([]);
   const [winner, setWinner] = useState(false);
@@ -95,6 +95,4 @@ const Bingo = () => {
       </button>
     </>
   );
-};
-
-export default Bingo;
+}
